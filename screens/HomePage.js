@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { getRestaurants } from '../api/api'; // Adjust the import path as needed
 import RestaurantCard from '../components/RestaurantCard'; // Adjust the import path as needed
+import SearchBar from '../components/SearchBar';
 import TabBar from '../components/TabBar';
 const bannerImage = require('../assets/banner-image.jpg');
 
@@ -11,23 +12,40 @@ const HomePage = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   
-
   useEffect(() => {
-    const fetchRestaurants = async () => {
-      try {
-        setLoading(true);
-        const data = await getRestaurants();
-        setRestaurants(data);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching restaurants:', error);
-        setError(error);
-        setLoading(false);
-      }
-    };
-
     fetchRestaurants();
   }, []);
+
+  const fetchRestaurants = async (searchTerm = 'Kuala Lumpur') => {
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await getRestaurants(searchTerm); // Pass search term to the API call
+      setRestaurants(data);
+    } catch (error) {
+      console.error('Error fetching restaurants:', error);
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // useEffect(() => {
+  //   const fetchRestaurants = async () => {
+  //     try {
+  //       setLoading(true);
+  //       const data = await getRestaurants();
+  //       setRestaurants(data);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error('Error fetching restaurants:', error);
+  //       setError(error);
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchRestaurants();
+  // }, []);
 
   const getCurrentDate = () => {
     const today = new Date();
@@ -65,11 +83,12 @@ const HomePage = ({ navigation }) => {
          source={bannerImage} // Replace with your banner image URL
         style={styles.banner}
       />
-      <TextInput
+      {/* <TextInput
         style={styles.searchBar}
         placeholder="Search for restaurants"
         editable={false} // Dummy search bar
-      />
+      /> */}
+      <SearchBar onSubmit={fetchRestaurants} />
 
       <Text style={styles.headerText}>Today's Picks for You</Text>
       <Text style={styles.dateText}>{getCurrentDate()}</Text>

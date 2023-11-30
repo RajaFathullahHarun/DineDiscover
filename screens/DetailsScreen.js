@@ -65,10 +65,13 @@ const DetailsScreen = ({ route }) => {
         <View style={styles.categoryContainer}>
           {renderCategories(restaurant.categories)}
         </View>
+        {/* <Text style={styles.reviewHeading}>Address</Text> */}
         <Text style={styles.address}>{restaurant.location.display_address.join('\n')}</Text>
         <Text style={styles.phone}>{restaurant.display_phone}</Text>
+        <Text style={styles.reviewHeading}>Recommended Reviews</Text>
       </View>
 
+     
       {reviews.map((review) => (
         <View key={review.id} style={styles.reviewCard}>
           <Text style={styles.reviewText}>{review.text}</Text>
@@ -139,10 +142,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#666666',
     marginBottom: 5,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 5,
   },
   phone: {
     fontSize: 16,
     color: '#1E90FF', // Dodger blue color for phone
+    marginBottom: 10,
   },
   reviewCard: {
     margin: 10,
@@ -172,6 +180,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: 'grey',
   },
+
+  reviewHeading: {
+    // marginTop:10,
+    fontSize: 24,
+    fontWeight: 'bold',
+  }
 });
 
 export default DetailsScreen;

@@ -8,6 +8,7 @@ const bannerImage = require('../assets/banner-image.jpg');
 
 const HomePage = ({ navigation }) => {
   const [restaurants, setRestaurants] = useState([]);
+  
 
   useEffect(() => {
     const fetchRestaurants = async () => {
@@ -78,13 +79,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 5,
-    paddingHorizontal: 5,
+    paddingHorizontal: 15,
   },
   dateText: {
     fontSize: 12,
     color: 'grey',
     marginBottom: 10,
-    paddingHorizontal: 5,
+    paddingHorizontal: 15,
   },
   searchBar: {
     fontSize: 16,

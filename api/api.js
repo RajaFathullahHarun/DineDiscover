@@ -13,7 +13,7 @@ const yelp = axios.create({
 export const getRestaurants = async (location = 'San Francisco') => {
   try {
     const response = await yelp.get(`businesses/search`, {
-      params: { location, categories: 'restaurants' },
+      params: { location:'kualalumpur', categories: 'restaurants' },
     });
     return response.data.businesses;
   } catch (error) {

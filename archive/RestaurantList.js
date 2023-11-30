@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import { getRestaurants } from './api/api'; // Adjust the import path as needed
+import { getRestaurants } from '../api/api'; // Adjust the import path as needed
 
 const RestaurantList = () => {
     const [restaurants, setRestaurants] = useState([]);
@@ -13,6 +13,7 @@ const RestaurantList = () => {
             try {
                 const data = await getRestaurants();
                 setRestaurants(data);
+                
                 setError(null);
             } catch (err) {
                 setError('Error fetching restaurants');

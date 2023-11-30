@@ -13,6 +13,7 @@ const HomePage = ({ navigation }) => {
       try {
         const data = await getRestaurants();
         setRestaurants(data);
+        console.log(data)
       } catch (error) {
         console.error('Error fetching restaurants:', error);
         // Handle the error appropriately

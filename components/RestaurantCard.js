@@ -8,7 +8,7 @@ const RestaurantCard = ({ restaurant }) => {
     return (
       <View style={styles.card}>
         <Image 
-          source={{ uri: restaurant.imageUrl }}
+          source={{ uri: restaurant.image_url }}
           style={styles.image}
         />
         <View style={styles.infoContainer}>

@@ -9,7 +9,8 @@ const AppNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="Home" component={HomePage} options={{ headerBackVisible: false, headerTitle: "DineDiscover" }}/>
+      {/* <Stack.Screen name="Home" component={HomePage} options={{ headerBackVisible: false, headerTitle: "DineDiscover" }}/> */}
+      <Stack.Screen name="Home" component={HomePage} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };

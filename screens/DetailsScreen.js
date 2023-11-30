@@ -40,7 +40,7 @@ const DetailsScreen = ({ route }) => {
   if (loading) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" />
+        <ActivityIndicator size="large" color="#FF1A1A" />
       </View>
     );
   }

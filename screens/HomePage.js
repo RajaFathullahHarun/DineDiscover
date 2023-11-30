@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, FlatList, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { getRestaurants } from '../api/api'; // Adjust the import path as needed
 import RestaurantCard from '../components/RestaurantCard'; // Adjust the import path as needed
 import TabBar from '../components/TabBar';
@@ -8,17 +8,21 @@ const bannerImage = require('../assets/banner-image.jpg');
 
 const HomePage = ({ navigation }) => {
   const [restaurants, setRestaurants] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   
 
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
+        setLoading(true);
         const data = await getRestaurants();
         setRestaurants(data);
-        // console.log(data)
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching restaurants:', error);
-        // Handle the error appropriately
+        setError(error);
+        setLoading(false);
       }
     };
 
@@ -35,6 +39,25 @@ const HomePage = ({ navigation }) => {
     // Navigate to DetailsScreen with the restaurant's data
     navigation.navigate('Details', { restaurant });
   };
+
+  if (loading) {
+    return (
+      <View style={styles.centeredView}>
+        <ActivityIndicator size="large" color="#FF1A1A" />
+      </View>
+    );
+  }
+  
+
+  if (error) {
+    // return <Text>Error fetching restaurants!</Text>;
+    return (
+      <View style={styles.centeredView}>
+        <Text>Error fetching restaurants!</Text>
+      </View>
+    );
+
+  }
 
   return (
     <View style={styles.container}>
@@ -106,7 +129,12 @@ const styles = StyleSheet.create({
     shadowRadius: 1.41,
     elevation: 2,
   },
-  // Additional styles can be added here
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF'
+  }
 });
 
 export default HomePage;

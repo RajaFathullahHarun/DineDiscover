@@ -28,10 +28,8 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     margin: 10,
     elevation: 3, // for Android
-    shadowColor: '#000', // for iOS
-    shadowOffset: { width: 0, height: 2 }, // for iOS
-    shadowOpacity: 0.1, // for iOS
-    shadowRadius: 2, // for iOS
+    borderWidth: 1,
+    borderColor: '#ddd'
   },
   image: {
     width: '100%',

@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     borderTopColor: '#ddd',
     paddingBottom: 10,
     paddingTop: 10,
+    marginVertical: 20,
   },
   tabButton: {
     alignItems: 'center',

@@ -2,13 +2,13 @@
 
 ## Getting Started with Expo Go
 
-This app can be easily run and tested using the Expo Go application. Follow these steps to get started:
+This app can be easily run and tested using the Expo Go application.For the sake of simplicity, I setup the environment using Expo instead of using React Native cli. Follow these steps to get started:
 
 1. Install the **Expo Go** app on your mobile device from the App Store (iOS) or Google Play Store (Android).
 2. Clone or download the project repository from GitHub to your local machine.
-3. Open a terminal and navigate to the project directory.
-4. Run `npm install` or `yarn install` to install all the necessary dependencies.
-5. Start the app by running `expo start`.
+3. Open a terminal in VScode and navigate to the project directory.
+4. Run `npm install` or `yarn install` to install all the necessary dependencies. (yarn/npm package manager and node installation required in the local machine)
+5. Start the app by running `yarn start`.
 6. Open the Expo Go app on your mobile device and scan the QR code displayed in your terminal. The app should start running on your device.
 
 ## Basic Features
